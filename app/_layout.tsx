@@ -37,13 +37,13 @@ export default function Layout() {
           <ThemeProvider
             value={colorScheme === "light" ? DefaultTheme : DarkTheme}
           >
-            <MySafeAreaView>
-              <Stack
-                screenOptions={{
-                  headerShown: false
-                }}
-              />
-            </MySafeAreaView>
+            {/* <MySafeAreaView> */}
+            <Stack
+              screenOptions={{
+                headerShown: false
+              }}
+            />
+            {/* </MySafeAreaView> */}
           </ThemeProvider>
         </Theme>
       </Suspense>

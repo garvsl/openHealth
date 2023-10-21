@@ -13,7 +13,9 @@ import {
   YStack
 } from "tamagui";
 
-import { MyStack } from "../components/MyStack";
+import { MyStack } from "../../components/MyStack";
+
+// import { MyStack } from "../components/MyStack";
 
 export default function Home() {
   const router = useRouter();
@@ -23,40 +25,7 @@ export default function Home() {
       justifyContent="center"
       alignItems="center"
     >
-      <Image
-        top={-50}
-        height={"100%"}
-        width={"110%"}
-        position="absolute"
-        source={require("../assets/goatbg.jpg")}
-      />
-      <Square
-        size={400}
-        bottom={-450}
-        backgroundColor={"white"}
-        justifyContent="flex-start"
-        alignItems="flex-start"
-        padding={"$5"}
-      >
-        <Text
-          fontSize={20}
-          fontWeight="bold"
-        >
-          Get started with FitGoat
-        </Text>
-        <Button
-          width={"100%"}
-          marginTop={16}
-          theme="green"
-          color={"black"}
-          fontWeight="bold"
-          onPress={() => router.push("/tabs")}
-        >
-          {"Continue ->"}
-        </Button>
-      </Square>
-
-      {/* <YStack
+      <YStack
         space="$4"
         maxWidth={600}
       >
@@ -123,7 +92,7 @@ export default function Home() {
             </Link>
           </YGroup.Item>
         </YGroup>
-      </YStack> */}
+      </YStack>
     </MyStack>
   );
 }

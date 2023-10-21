@@ -1,6 +1,5 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tabs, useRouter } from "expo-router";
-import { Button } from "tamagui";
 
 export default function Layout() {
   const router = useRouter();
@@ -8,51 +7,109 @@ export default function Layout() {
   return (
     <Tabs>
       <Tabs.Screen
-        name="tab1"
+        name="tab0"
         options={{
-          title: "Tab 1",
+          title: "Calorie Counter",
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
-                name="one-up"
+                name="food-apple"
                 {...props}
+                size={30}
+                top={5}
               />
             );
-          },
-          headerLeft() {
+          }
+          // headerLeft() {
+          //   return (
+          //     <Button
+          //       ml="$2.5"
+          //       onPress={() => router.push("/")}
+          //     >
+          //       <MaterialCommunityIcons name="arrow-left" />
+          //     </Button>
+          //   );
+          // }
+        }}
+      />
+      <Tabs.Screen
+        name="tab1"
+        options={{
+          title: "Form Rater",
+          tabBarIcon(props) {
             return (
-              <Button
-                ml="$2.5"
-                onPress={() => router.push("/")}
-              >
-                <MaterialCommunityIcons name="arrow-left" />
-              </Button>
+              <MaterialCommunityIcons
+                name="camera"
+                {...props}
+                size={30}
+                top={5}
+              />
             );
           }
+          // headerLeft() {
+          //   return (
+          //     <Button
+          //       ml="$2.5"
+          //       onPress={() => router.push("/")}
+          //     >
+          //       <MaterialCommunityIcons name="arrow-left" />
+          //     </Button>
+          //   );
+          // }
         }}
       />
       <Tabs.Screen
         name="tab2"
         options={{
-          title: "Tab 2",
+          title: "",
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
-                name="two-factor-authentication"
+                name="dumbbell"
                 {...props}
+                size={30}
+                top={20}
               />
             );
-          },
-          headerLeft() {
+          }
+
+          // headerLeft() {
+          //   return (
+          //     <Button
+          //       ml="$2.5"
+          //       onPress={() => router.push("/")}
+          //     >
+          //       <MaterialCommunityIcons name="arrow-left" />
+          //     </Button>
+          //   );
+          // }
+        }}
+      />
+      <Tabs.Screen
+        name="tab4"
+        options={{
+          title: "",
+          tabBarIcon(props) {
             return (
-              <Button
-                ml="$2.5"
-                onPress={() => router.push("/")}
-              >
-                <MaterialCommunityIcons name="arrow-left" />
-              </Button>
+              <MaterialCommunityIcons
+                name="clock"
+                {...props}
+                size={30}
+                top={20}
+              />
             );
           }
+
+          // headerLeft() {
+          //   return (
+          //     <Button
+          //       ml="$2.5"
+          //       onPress={() => router.push("/")}
+          //     >
+          //       <MaterialCommunityIcons name="arrow-left" />
+          //     </Button>
+          //   );
+          // }
         }}
       />
     </Tabs>
