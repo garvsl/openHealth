@@ -10,6 +10,7 @@ npm-debug.*
 *.orig.*
 web-build/
 .yarn
+components/apiKey.json
 
 # macOS
 .DS_Store
