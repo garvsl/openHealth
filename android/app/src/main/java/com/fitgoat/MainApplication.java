@@ -1,4 +1,4 @@
-package com.fitgoat;
+package com.fitGoat;
 
 import android.app.Application;
 import android.content.res.Configuration;

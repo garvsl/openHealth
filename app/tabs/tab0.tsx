@@ -83,7 +83,6 @@ export default function Tab1() {
         >
           {commonFoods &&
             commonFoods.map((food, index) => {
-              console.log(food, index);
               return (
                 <CardDemo
                   key={index}

@@ -1,37 +1,100 @@
-import { H5, Tabs, Text } from "tamagui";
+import React, { useEffect, useState } from "react";
+import { Button, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { Video } from "expo-av";
+import { Camera } from "expo-camera";
+import { Circle, H5, Tabs, Text } from "tamagui";
 
 import { MyStack } from "../../components/MyStack";
 
 export default function Tab1() {
+  const [hasAudioPermission, setHasAudioPermission] = useState(null);
+  const [hasCameraPermission, setHasCameraPermission] = useState(null);
+  const [camera, setCamera] = useState(null);
+  const [record, setRecord] = useState(null);
+  const [type, setType] = useState(Camera.Constants.Type.back);
+  const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});
+
+  useEffect(() => {
+    (async () => {
+      const cameraStatus = await Camera.requestPermissionsAsync();
+      setHasCameraPermission(cameraStatus.status === "granted");
+      const audioStatus = await Camera.requestMicrophonePermissionsAsync();
+      setHasAudioPermission(audioStatus.status === "granted");
+    })();
+  }, []);
+
+  const takeVideo = async () => {
+    if (camera) {
+      const data = await camera.recordAsync({
+        VideoQuality: ["2160p"],
+        maxDuration: 10,
+        maxFileSize: 200,
+        mute: false,
+        videoBitrate: 5000000
+      });
+      setRecord(data.uri);
+      console.log(data.uri);
+    }
+  };
+  const stopVideo = async () => {
+    camera.stopRecording();
+  };
+
+  if (hasCameraPermission === null || hasAudioPermission === null) {
+    return <Text>Waiting for permissions</Text>;
+  }
+  if (hasCameraPermission === false || hasAudioPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+
   return (
     <MyStack>
       <Tabs
         defaultValue="tab1"
         orientation="horizontal"
+        alignItems="center"
+        justifyContent="flex-end"
         flexDirection="column"
-        width="100%"
+        width="110%"
+        left={"-5%"}
+        height={"110%"}
+        marginTop={"$-5"}
       >
-        <Tabs.List>
-          <Tabs.Tab value="tab1">
-            <Text>SubTab 1</Text>
-          </Tabs.Tab>
-          <Tabs.Tab value="tab2">
-            <Text>SubTab 2</Text>
-          </Tabs.Tab>
-          <Tabs.Tab value="tab3">
-            <Text>SubTab 3</Text>
-          </Tabs.Tab>
-        </Tabs.List>
-
-        <Tabs.Content value="tab1">
-          <H5>SubTab 1 Content</H5>
-        </Tabs.Content>
-        <Tabs.Content value="tab2">
-          <H5>SubTab 2 Content</H5>
-        </Tabs.Content>
-        <Tabs.Content value="tab3">
-          <H5>SubTab 3 Content</H5>
-        </Tabs.Content>
+        <Video
+          ref={video}
+          source={{
+            uri: record
+          }}
+          useNativeControls
+          resizeMode="contain"
+          isLooping
+          onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+        />
+        <Camera
+          ref={(ref) => setCamera(ref)}
+          type={type}
+          ratio={"4:3"}
+        />
+        <Button
+          title="Flip Video"
+          onPress={() => {
+            setType(
+              type === Camera.Constants.Type.back
+                ? Camera.Constants.Type.front
+                : Camera.Constants.Type.back
+            );
+          }}
+        ></Button>
+        <Button
+          title="Take video"
+          onPress={() => takeVideo()}
+        />
+        <Button
+          title="Stop Video"
+          onPress={() => stopVideo()}
+        />
       </Tabs>
     </MyStack>
   );

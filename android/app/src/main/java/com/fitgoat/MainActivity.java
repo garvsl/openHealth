@@ -1,4 +1,4 @@
-package com.fitgoat;
+package com.fitGoat;
 
 import android.os.Build;
 import android.os.Bundle;
