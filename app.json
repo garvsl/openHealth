@@ -9,6 +9,9 @@
     },
     "icon": "./assets/icon.png",
     "name": "fitGoat",
-    "slug": "fitGoat"
+    "slug": "fitGoat",
+    "ios": {
+      "bundleIdentifier": "com.fitGoat"
+    }
   }
 }
