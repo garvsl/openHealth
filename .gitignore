@@ -13,7 +13,7 @@ web-build/
 components/apiKey.json
 ios
 android
-
+ml/huggingfaceToken.json
 # macOS
 .DS_Store
 
