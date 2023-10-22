@@ -9,10 +9,10 @@ import aiohttp
 import json
 import asyncio
 
-token = json.load(open("ml/huggingfaceToken.json"))
+token = json.load(open("ml/huggingfaceToken.json"))['token']
 
-API_URL = "/https://api-inference.huggingface.co/models/nateraw/food"
-headers = {"Authorization": f"Bearer {token['token']}"}
+API_URL = "https://api-inference.huggingface.co/models/nateraw/food"
+headers = {"Authorization": f"Bearer {token}"}
 
 
 async def query(filename):
@@ -25,8 +25,8 @@ async def query(filename):
 
 
 async def main():
-    output = await query("pizza.webp")
-    return(output)
+    output = await query("ml/pizza.webp")
+    print(output)
 
 
 if __name__ == "__main__":
