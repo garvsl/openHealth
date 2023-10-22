@@ -24,30 +24,35 @@ export default function Home() {
       alignItems="center"
     >
       <Image
-        top={-50}
+        top={-10}
+        // margin={"$15"}
         height={"100%"}
         width={"110%"}
+        contain="center"
         position="absolute"
-        source={require("../assets/goatbg.jpg")}
+        source={require("../assets/OPEN_HEALTH.png")}
       />
       <Square
         size={400}
         bottom={-450}
-        backgroundColor={"white"}
+        backgroundColor={"$red10Light"}
         justifyContent="flex-start"
         alignItems="flex-start"
-        padding={"$5"}
+        padding={"$7"}
+        paddingTop={"$5"}
+        paddingBottom={"$5"}
       >
         <Text
           fontSize={20}
           fontWeight="bold"
+          color={"white"}
         >
-          Get started with FitGoat
+          Get started with OpenHealth
         </Text>
         <Button
           width={"100%"}
-          marginTop={16}
-          theme="green"
+          marginTop={12}
+          theme="white"
           color={"black"}
           fontWeight="bold"
           onPress={() => router.push("/tabs")}

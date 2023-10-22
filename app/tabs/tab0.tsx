@@ -64,7 +64,7 @@ export default function Tab1() {
       <ScrollView
         width="110%"
         left="-5%"
-        marginTop={-15}
+        marginTop={-10}
         marginBottom={-20}
         bottom={0}
         backgroundColor="white"
@@ -75,10 +75,11 @@ export default function Tab1() {
           // defaultValue="tab2"
           justifyContent="center"
           orientation="vertical"
+          marginTop={10}
           backgroundColor={"transparent"}
           flexDirection="row"
           flexWrap="wrap"
-          gap={-8}
+          gap={-20}
           rowGap={16}
         >
           {commonFoods &&

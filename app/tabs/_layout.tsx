@@ -7,6 +7,32 @@ export default function Layout() {
   return (
     <Tabs>
       <Tabs.Screen
+        name="tab-1"
+        options={{
+          title: "Home",
+          tabBarIcon(props) {
+            return (
+              <MaterialCommunityIcons
+                name="home"
+                {...props}
+                size={30}
+                top={5}
+              />
+            );
+          }
+          // headerLeft() {
+          //   return (
+          //     <Button
+          //       ml="$2.5"
+          //       onPress={() => router.push("/")}
+          //     >
+          //       <MaterialCommunityIcons name="arrow-left" />
+          //     </Button>
+          //   );
+          // }
+        }}
+      />
+      <Tabs.Screen
         name="tab0"
         options={{
           title: "Calorie Counter",
@@ -68,7 +94,7 @@ export default function Layout() {
                 name="dumbbell"
                 {...props}
                 size={30}
-                top={20}
+                top={5}
               />
             );
           }
@@ -95,7 +121,7 @@ export default function Layout() {
                 name="clock"
                 {...props}
                 size={30}
-                top={20}
+                top={5}
               />
             );
           }
