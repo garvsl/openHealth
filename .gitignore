@@ -11,6 +11,8 @@ npm-debug.*
 web-build/
 .yarn
 components/apiKey.json
+ios
+android
 
 # macOS
 .DS_Store

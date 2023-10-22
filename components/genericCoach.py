@@ -1,5 +1,3 @@
-openai_key = "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"
-
 import os
 import openai
 import json 
