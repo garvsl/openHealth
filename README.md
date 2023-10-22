@@ -51,6 +51,14 @@ The gut-brain axis, epigenetics, nutritional psychiatry, and healthspan are some
 ## Accomplishments that we're proud of
 
 ## What we learned
+To a great extent, we learned that tools rule(s). Information and Content production are great for sharing a message, but when you want a mission to be implemented, you must provide the tools.
+
+We all utilized the app and have learned more about our bodies, what to do, and how to improve than anytime we could've spent reading articles or watching videos. 
+
+Of course, it is great to expand your knowledge, but vanity creeps up when you have no plans or strategies to implement what is learned. 
+
+To quote Fight Club "Self-improvement is {you know what they said}. Now self-destruction {construction*} is the answer."
+We all now have tools to take with us in our lifelong fitness endeavors.
 
 ## What's next for Open Health
 We plan to continue building Open Health and running small-scale research projects where we get participants to utilize CV, Calorie Counters, and AI-generated advice to better their health, and compare them against those who tried to navigate the vast health space on their own.
