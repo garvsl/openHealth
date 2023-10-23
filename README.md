@@ -6,11 +6,12 @@
 </p>
 
 ## Quick Start
-Just run the following, changing `yourappname` to the name of your project.
 ```
-npx create-expo-app yourappname -t tamagui-expo-template --no-install
-cd yourappname
-yarn install
+Clone/fork the repo
+run yarn install
+run npx expo prebuild
+run npx expo run:ios
+
 ```
 ## Inspiration
 **Problem**
@@ -46,7 +47,11 @@ The gut-brain axis, epigenetics, nutritional psychiatry, and healthspan are some
 
 ## How we built it
 
+React Native, Python, Flask.
+
 ## Challenges we ran into
+
+API integration was troubling, some didnt work at all and lots had plenty of issues, that werent related to our implementation. The biggest problem was implementing this big of a project within the allotted time, and also getting plenty of sleep!
 
 ## Accomplishments that we're proud of
 
