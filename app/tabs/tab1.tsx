@@ -1,9 +1,24 @@
 import { useEffect, useRef, useState } from "react";
+import { X } from "@tamagui/lucide-icons";
 import { Video } from "expo-av";
 import { Camera, CameraType } from "expo-camera";
+import * as FileSystem from "expo-file-system";
 import * as MediaLibrary from "expo-media-library";
 import { shareAsync } from "expo-sharing";
-import { Button, Text } from "tamagui";
+import {
+  Adapt,
+  Button,
+  Dialog,
+  Fieldset,
+  Image,
+  Label,
+  Paragraph,
+  Sheet,
+  Text,
+  TooltipSimple,
+  Unspaced,
+  XStack
+} from "tamagui";
 
 import { MySafeAreaView } from "../../components/MySafeAreaView";
 
@@ -16,6 +31,7 @@ export default function Tab1() {
   const [isRecording, setIsRecording] = useState(false);
   const [video, setVideo] = useState<any>();
   const [picture, setPicture] = useState<any>();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -61,52 +77,54 @@ export default function Tab1() {
 
     console.log(photo);
 
-    const apiUrl = "https://vision.foodvisor.io/api/1.0/en";
-    const apiKey = "OBVMTO2V.Wkcr49NJHF5g63Wy3JOYzZvYdk9IK3PC";
+    // const query = async (filename) => {
+    //   try {
+    //     const destinationUri = `${FileSystem.documentDirectory}${filename}`;
+    //     const data = await FileSystem.readAsStringAsync(destinationUri, {
+    //       encoding: FileSystem.EncodingType.Base64
+    //     });
 
-    const analyzeImage = async () => {
-      const formData = new FormData();
-      const response = await fetch(photo.uri);
-      const blob = await response.blob();
+    //     const response = await fetch(
+    //       "https://api-inference.huggingface.co/models/nateraw/food",
+    //       {
+    //         method: "POST",
+    //         headers: {
+    //           Authorization: "Bearer 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",
+    //           "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({ data: data })
+    //       }
+    //     );
 
-      formData.append("image", blob, "image.jpg");
-      // const optionalParams = {
-      //   scopes: ["multiple_items, nutrition:macro"] // Replace with your desired scopes
-      // };
+    //     if (!response.ok) {
+    //       throw new Error(`Request failed with status: ${response.status}`);
+    //     }
 
-      // for (const key in optionalParams) {
-      //   formData.append(key, JSON.stringify(optionalParams[key]));
-      // }
+    //     const result = await response.json();
+    //     return result;
+    //   } catch (error) {
+    //     console.error("Error:", error);
+    //     throw error;
+    //   }
+    // // };
 
-      try {
-        const response = await fetch(
-          `https://vision.foodvisor.io/api/1.0/en/limits`,
-          {
-            method: "GET"
-            // headers: {
-            //   Authorization: `Api-Key ${apiKey}`
-            // }
-            // body: formData
-          }
-        );
+    // const filename = "myImage.jpg"; // Adjust the filename as needed
 
-        if (response.ok) {
-          const data = await response.json();
-          console.log("Analysis results:", data);
-        } else {
-          console.error("Error performing image analysis:", response.status);
-        }
-      } catch (error) {
-        console.error("An error occurred:", error);
-      }
-    };
+    // try {
+    //   const destinationUri = `${FileSystem.documentDirectory}${filename}`;
+    //   await FileSystem.copyAsync({ from: photo.uri, to: destinationUri });
+    //   console.log("File copied successfully");
 
-    // Call the function to perform the image analysis
-    analyzeImage();
+    //   // Call the query function to analyze the image
+    //   const response = await query(filename);
+    //   console.log(JSON.stringify(response));
+    // } catch (error) {
+    //   console.error("Error copying file:", error);
+    // }
 
-    // MediaLibrary.saveToLibraryAsync(photo.uri).then(() => {
-    //   setPicture(undefined);
-    // });
+    MediaLibrary.saveToLibraryAsync(photo.uri).then(() => {
+      setPicture(undefined);
+    });
   };
 
   const stopRecording = () => {
@@ -145,6 +163,14 @@ export default function Tab1() {
       style={{ width: "100%", height: "100%", justifyContent: "flex-end" }}
       ref={cameraRef}
     >
+      {picture && (
+        <Image
+          height={"100%"}
+          width={"100%"}
+          zIndex={99}
+          source={{ uri: picture.uri }}
+        />
+      )}
       <Button onPress={isRecording ? stopRecording : recordVideo}>
         {isRecording ? "Stop Recording" : "Record Video"}
       </Button>

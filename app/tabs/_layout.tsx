@@ -35,7 +35,7 @@ export default function Layout() {
       <Tabs.Screen
         name="tab0"
         options={{
-          title: "Calorie Counter",
+          title: "Calorie",
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
@@ -61,7 +61,7 @@ export default function Layout() {
       <Tabs.Screen
         name="tab1"
         options={{
-          title: "Form Rater",
+          title: "Vision",
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
@@ -87,38 +87,11 @@ export default function Layout() {
       <Tabs.Screen
         name="tab2"
         options={{
-          title: "",
+          title: "Training",
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="dumbbell"
-                {...props}
-                size={30}
-                top={5}
-              />
-            );
-          }
-
-          // headerLeft() {
-          //   return (
-          //     <Button
-          //       ml="$2.5"
-          //       onPress={() => router.push("/")}
-          //     >
-          //       <MaterialCommunityIcons name="arrow-left" />
-          //     </Button>
-          //   );
-          // }
-        }}
-      />
-      <Tabs.Screen
-        name="tab4"
-        options={{
-          title: "",
-          tabBarIcon(props) {
-            return (
-              <MaterialCommunityIcons
-                name="clock"
                 {...props}
                 size={30}
                 top={5}
