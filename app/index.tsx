@@ -1,27 +1,18 @@
-import { Github, Twitter } from "@tamagui/lucide-icons";
-import { Link, useRouter } from "expo-router";
-import {
-  Button,
-  H1,
-  Image,
-  ListItem,
-  Paragraph,
-  Separator,
-  Square,
-  Text,
-  YGroup,
-  YStack
-} from "tamagui";
+import { useState } from "react";
+import { useRouter } from "expo-router";
+import { Button, Image, Square, Text } from "tamagui";
 
 import { MyStack } from "../components/MyStack";
 
 export default function Home() {
   const router = useRouter();
+  const [touching, setTouching] = useState(false);
 
   return (
     <MyStack
       justifyContent="center"
       alignItems="center"
+      backgroundColor={"#FFFFFF"}
     >
       <Image
         top={-10}
@@ -29,13 +20,14 @@ export default function Home() {
         height={"100%"}
         width={"110%"}
         contain="center"
+        scale={0.9}
         position="absolute"
         source={require("../assets/OPEN_HEALTH.png")}
       />
       <Square
         size={400}
         bottom={-450}
-        backgroundColor={"$red10Light"}
+        // backgroundColor={"#FFFCED"}
         justifyContent="flex-start"
         alignItems="flex-start"
         padding={"$7"}
@@ -45,16 +37,20 @@ export default function Home() {
         <Text
           fontSize={20}
           fontWeight="bold"
-          color={"white"}
+          color={"black"}
         >
           Get started with OpenHealth
         </Text>
         <Button
           width={"100%"}
           marginTop={12}
-          theme="white"
-          color={"black"}
+          borderColor={"black"}
+          backgroundColor={"white"}
+          color={touching ? "white" : "black"}
           fontWeight="bold"
+          theme="light"
+          onTouchStart={() => setTouching(true)}
+          onTouchEnd={() => setTouching(false)}
           onPress={() => router.push("/tabs")}
         >
           {"Continue ->"}

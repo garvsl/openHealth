@@ -3,7 +3,7 @@
     "scheme": "fitGoat",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "backgroundColor": "#ffffff",
+      "backgroundColor": "#FFFCED",
       "image": "./assets/splash.png",
       "resizeMode": "contain"
     },

@@ -34,9 +34,7 @@ export default function Layout() {
     <TamaguiProvider config={config}>
       <Suspense fallback={<Text>Loading...</Text>}>
         <Theme name={colorScheme}>
-          <ThemeProvider
-            value={colorScheme === "light" ? DefaultTheme : DarkTheme}
-          >
+          <ThemeProvider value={DefaultTheme}>
             {/* <MySafeAreaView> */}
             <Stack
               screenOptions={{
