@@ -22,7 +22,7 @@ const DemoCard = (props: DemoCardProps) => {
   const { nam, cal, photo } = props;
   return (
     <Card
-      elevate
+      // elevate
       size="$4"
       bordered
       //   key={nam}

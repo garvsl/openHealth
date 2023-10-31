@@ -6,7 +6,6 @@ import { MyStack } from "../components/MyStack";
 
 export default function Home() {
   const router = useRouter();
-  const [touching, setTouching] = useState(false);
 
   return (
     <MyStack
@@ -46,11 +45,8 @@ export default function Home() {
           marginTop={12}
           borderColor={"black"}
           backgroundColor={"white"}
-          color={touching ? "white" : "black"}
           fontWeight="bold"
-          theme="light"
-          onTouchStart={() => setTouching(true)}
-          onTouchEnd={() => setTouching(false)}
+          theme="red"
           onPress={() => router.push("/tabs")}
         >
           {"Continue ->"}

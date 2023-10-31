@@ -20659,7 +20659,7 @@
         "pointer": "coarse"
       }
     },
-    "defaultTheme": "dark",
+    "defaultTheme": "light",
     "shouldAddPrefersColorThemes": false,
     "themeClassNameOnRoot": false,
     "shorthands": {

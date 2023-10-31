@@ -1,5 +1,6 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tabs, useRouter } from "expo-router";
+import { Button, Square } from "tamagui";
 
 export default function Layout() {
   const router = useRouter();
@@ -7,42 +8,43 @@ export default function Layout() {
   return (
     <Tabs>
       <Tabs.Screen
-        name="tab-1"
+        name="home"
         options={{
-          title: "Home",
+          headerShown: false,
+          title: "",
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="home"
                 {...props}
-                size={30}
-                top={5}
+                size={40}
+                marginBottom={-40}
               />
             );
+          },
+          headerLeft() {
+            return (
+              <Square
+                backgroundColor={"white"}
+                width={"1000%"}
+                height={"100%"}
+              ></Square>
+            );
           }
-          // headerLeft() {
-          //   return (
-          //     <Button
-          //       ml="$2.5"
-          //       onPress={() => router.push("/")}
-          //     >
-          //       <MaterialCommunityIcons name="arrow-left" />
-          //     </Button>
-          //   );
-          // }
         }}
       />
       <Tabs.Screen
-        name="tab0"
+        name="calorie"
         options={{
-          title: "Calorie",
+          title: "",
+          headerShown: false,
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="food-apple"
                 {...props}
-                size={30}
-                top={5}
+                size={40}
+                marginBottom={-40}
               />
             );
           }
@@ -59,16 +61,17 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="tab1"
+        name="vision"
         options={{
-          title: "Vision",
+          title: "",
+          headerShown: false,
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="camera"
                 {...props}
-                size={30}
-                top={5}
+                size={55}
+                marginBottom={-40}
               />
             );
           }
@@ -85,16 +88,46 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="tab2"
+        name="training"
         options={{
-          title: "Training",
+          title: "",
+          headerShown: false,
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="dumbbell"
                 {...props}
-                size={30}
-                top={5}
+                size={40}
+                marginBottom={-40}
+              />
+            );
+          }
+
+          // headerLeft() {
+          //   return (
+          //     <Button
+          //       ml="$2.5"
+          //       onPress={() => router.push("/")}
+          //     >
+          //       <MaterialCommunityIcons name="arrow-left" />
+          //     </Button>
+          //   );
+          // }
+        }}
+      />
+
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "",
+          headerShown: false,
+          tabBarIcon(props) {
+            return (
+              <MaterialCommunityIcons
+                name="face-man-outline"
+                {...props}
+                size={40}
+                marginBottom={-40}
               />
             );
           }

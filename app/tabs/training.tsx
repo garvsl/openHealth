@@ -87,7 +87,7 @@ export function DemoCard(props: CardProps) {
   );
 }
 
-export default function Tab2() {
+export default function Training() {
   const router = useRouter();
   return (
     <MyStack>

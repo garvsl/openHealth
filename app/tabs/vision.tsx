@@ -22,7 +22,7 @@ import {
 
 import { MySafeAreaView } from "../../components/MySafeAreaView";
 
-export default function Tab1() {
+export default function Vision() {
   const cameraRef: any = useRef();
   const [cameraDir, setCameraDir] = useState(CameraType.back);
   const [hasCameraPermission, setHasCameraPermission] = useState();

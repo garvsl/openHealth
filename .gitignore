@@ -16,5 +16,6 @@ android
 ml/huggingfaceToken.json
 # macOS
 .DS_Store
+env.json
 
 yarn-error.log
