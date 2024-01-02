@@ -2,6 +2,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tabs, useRouter } from "expo-router";
 import { Button, Square } from "tamagui";
 
+import { ModerateScale } from "../hooks/metrics";
 export default function Layout() {
   const router = useRouter();
 
@@ -12,25 +13,30 @@ export default function Layout() {
         options={{
           headerShown: false,
           title: "",
+          tabBarStyle: {
+            // marginBottom: -10,
+            marginLeft: -20
+          },
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="home"
                 {...props}
-                size={40}
-                marginBottom={-40}
+                size={ModerateScale(30)}
+                marginBottom={-15}
+                marginRight={-20}
               />
             );
-          },
-          headerLeft() {
-            return (
-              <Square
-                backgroundColor={"white"}
-                width={"1000%"}
-                height={"100%"}
-              ></Square>
-            );
           }
+          // headerLeft() {
+          //   return (
+          //     <Square
+          //       backgroundColor={"white"}
+          //       width={"1000%"}
+          //       height={"100%"}
+          //     ></Square>
+          //   );
+          // }
         }}
       />
       <Tabs.Screen
@@ -38,13 +44,18 @@ export default function Layout() {
         options={{
           title: "",
           headerShown: false,
+          tabBarStyle: {
+            // marginBottom: -10
+            marginLeft: -20
+          },
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="food-apple"
                 {...props}
-                size={40}
-                marginBottom={-40}
+                size={ModerateScale(30)}
+                marginBottom={-15}
+                marginRight={-20}
               />
             );
           }
@@ -65,13 +76,18 @@ export default function Layout() {
         options={{
           title: "",
           headerShown: false,
+          tabBarStyle: {
+            // marginBottom: -10
+            marginLeft: -20
+          },
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="camera"
                 {...props}
-                size={55}
-                marginBottom={-40}
+                size={ModerateScale(30)}
+                marginBottom={-20}
+                marginRight={-20}
               />
             );
           }
@@ -92,13 +108,18 @@ export default function Layout() {
         options={{
           title: "",
           headerShown: false,
+          tabBarStyle: {
+            // marginBottom: -10
+            marginLeft: -20
+          },
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="dumbbell"
                 {...props}
-                size={40}
-                marginBottom={-40}
+                size={ModerateScale(30)}
+                marginBottom={-15}
+                marginRight={-20}
               />
             );
           }
@@ -121,13 +142,18 @@ export default function Layout() {
         options={{
           title: "",
           headerShown: false,
+          tabBarStyle: {
+            // marginBottom: -10
+            marginLeft: -20
+          },
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="face-man-outline"
                 {...props}
-                size={40}
-                marginBottom={-40}
+                size={ModerateScale(30)}
+                marginBottom={-15}
+                marginRight={-20}
               />
             );
           }
