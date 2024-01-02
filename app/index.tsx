@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { ArrowRight } from "@tamagui/lucide-icons";
 import { useRouter } from "expo-router";
 import { Button, Image, Square, Text } from "tamagui";
 
 import { MyStack } from "../components/MyStack";
+
+import { ModerateScale, VerticalScale } from "./hooks/metrics";
 
 export default function Home() {
   const router = useRouter();
@@ -12,29 +14,37 @@ export default function Home() {
       justifyContent="center"
       alignItems="center"
       backgroundColor={"#FFFFFF"}
+      padding={0}
     >
       <Image
-        top={-10}
-        // margin={"$15"}
+        // marginTop={"15%"}
         height={"100%"}
-        width={"110%"}
-        contain="center"
-        scale={0.9}
-        position="absolute"
-        source={require("../assets/OPEN_HEALTH.png")}
+        // alignSelf="center"
+        // scale={0.9}
+        // position="absolute"
+        width={"100%"}
+        resizeMode="contain"
+        // height={"100%"}
+        source={{
+          uri: require("../assets/OPEN_HEALTH.png"),
+          width: 400,
+          height: 600
+        }}
       />
       <Square
-        size={400}
-        bottom={-450}
-        // backgroundColor={"#FFFCED"}
+        // margin={40}
+        paddingLeft={"$4"}
+        paddingRight={"$4"}
+        width={"100%"}
+        position="absolute"
+        bottom={"2.5%"}
         justifyContent="flex-start"
         alignItems="flex-start"
-        padding={"$7"}
         paddingTop={"$5"}
         paddingBottom={"$5"}
       >
         <Text
-          fontSize={20}
+          fontSize={ModerateScale(22)}
           fontWeight="bold"
           color={"black"}
         >
@@ -42,14 +52,21 @@ export default function Home() {
         </Text>
         <Button
           width={"100%"}
+          height={VerticalScale(55)}
           marginTop={12}
           borderColor={"black"}
           backgroundColor={"white"}
           fontWeight="bold"
           theme="red"
+          iconAfter={<ArrowRight size={ModerateScale(14)} />}
           onPress={() => router.push("/tabs")}
         >
-          {"Continue ->"}
+          <Text
+            fontWeight={"bold"}
+            fontSize={ModerateScale(14)}
+          >
+            Continue
+          </Text>
         </Button>
       </Square>
 
