@@ -1,50 +1,50 @@
 import { Trash } from "@tamagui/lucide-icons";
-import { useRef, useState } from "react";
+import { forwardRef, useRef, useState } from "react";
 import { Animated, StyleSheet } from "react-native";
 import { RectButton, Swipeable } from "react-native-gesture-handler";
 import { DemoCard } from "./DemoCard";
 import {View} from "tamagui"
 import { SheetDemo } from "./SheetDemo";
 
-export const SheetCard = ({ text, iconText, iconColor, size, children }: any) => {
-    const swipe:any = useRef(null);
-    const [open, setOpen] = useState(false);
-  
-    const renderRightActions = (progress, dragAnimatedValue) => {
-      const trans = progress.interpolate({
-        inputRange: [0, 1],
-        outputRange: [180, 0],
-        extrapolate: "clamp"
-      });
-      const opacity = dragAnimatedValue.interpolate({
-        inputRange: [-100, 0],
-        outputRange: [1, 0],
-        extrapolate: "clamp"
-      });
-      const pressHandler = () => {
-        swipe.current.close();
-      };
-      return (
-        <Animated.View
-          style={{ flex: 1, transform: [{ translateX: trans }], opacity }}
-        >
-          <RectButton
-    
-            style={[
-              styles.rightAction,
-              { backgroundColor: "rgba(248, 0, 0, 0.8)", borderRadius: 10 }
-            ]}
-            onPress={pressHandler}
-          >
-            <Trash
-              size={25}
-              color="white"
-            />
-          </RectButton>
-        </Animated.View>
-      );
+const renderRightActions = (progress, dragAnimatedValue, ref) => {
+    const trans = progress.interpolate({
+      inputRange: [0, 1],
+      outputRange: [180, 0],
+      extrapolate: "clamp"
+    });
+    const opacity = dragAnimatedValue.interpolate({
+      inputRange: [-100, 0],
+      outputRange: [1, 0],
+      extrapolate: "clamp"
+    });
+    const pressHandler = () => {
+      ref.current.close();
     };
+    return (
+      <Animated.View
+        style={{ flex: 1, transform: [{ translateX: trans }], opacity }}
+      >
+        <RectButton
   
+          style={[
+            styles.rightAction,
+            { backgroundColor: "rgba(248, 0, 0, 0.8)", borderRadius: 10 }
+          ]}
+          onPress={pressHandler}
+        >
+          <Trash
+            size={25}
+            color="white"
+          />
+        </RectButton>
+      </Animated.View>
+    );
+  };
+
+
+export const SheetCard = forwardRef(function SheetCard({text, iconText, iconColor, size, func, children}:any, ref:any) {
+    const [open, setOpen] = useState(false);
+
     
     return (
       <View
@@ -52,14 +52,14 @@ export const SheetCard = ({ text, iconText, iconColor, size, children }: any) =>
         paddingHorizontal={"$2"}
       >
         <Swipeable
-          ref={swipe}
+          ref={ref}
           friction={3}
           shouldCancelWhenOutside={true}
           cancelsTouchesInView={true}
-          renderRightActions={renderRightActions}
+          renderRightActions={(progress, dragAnimatedValue) => renderRightActions(progress, dragAnimatedValue, ref)}
           rightThreshold={2}
           overshootFriction={7}
-          
+          onSwipeableWillOpen={func}
         >
           <SheetDemo
             open={open}
@@ -78,7 +78,7 @@ export const SheetCard = ({ text, iconText, iconColor, size, children }: any) =>
         </Swipeable>
       </View>
     );
-  };
+  });
   
   const styles = StyleSheet.create({
     container: {

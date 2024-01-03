@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createRef, useRef, useState } from "react";
 import { ScrollView, Text, YStack } from "tamagui";
 import { XStack } from "tamagui";
 import HeaderBar from "../../components/HeaderBar";
@@ -42,6 +42,7 @@ export default function Home() {
   ]);
 
   const [text, setText] = useState("");
+  const refs = defaultItems.map(() => useRef(null));
 
   return (
     <MyStack
@@ -82,7 +83,10 @@ export default function Home() {
         </YStack>
 
         <ScrollView
-          marginTop={-25}
+          marginTop={-15}
+          marginBottom={15}
+          onScroll={()=>{refs.map((e)=>e.current.close())}}
+          scrollEventThrottle={0}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ alignItems: "center" }}
         >
@@ -94,11 +98,13 @@ export default function Home() {
             {text == "" &&
               defaultItems.map((item, index) => (
                 <SheetCard
+                  ref={refs[index]}
                   key={index}
                   text={item.text}
                   iconText={item.iconText}
                   iconColor={item.iconColor}
                   size={item.size}
+                  func={()=>{refs.map((e)=>e != refs[index] && e.current.close())}}
                 />
               ))}
 
