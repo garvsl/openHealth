@@ -41,6 +41,7 @@ export const SheetDemo = ({ children, open, setOpen }: any) => {
                 size="$6"
                 circular
                 icon={ChevronDown}
+                alignSelf="center"
                 onPress={() => setOpen(false)}
               />
 
