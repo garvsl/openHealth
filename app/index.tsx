@@ -59,7 +59,7 @@ export default function Home() {
           fontWeight="bold"
           theme="red"
           iconAfter={<ArrowRight size={ModerateScale(14)} />}
-          onPress={() => router.push("/tabs")}
+          onPress={() => router.replace("/tabs")}
         >
           <Text
             fontWeight={"bold"}
