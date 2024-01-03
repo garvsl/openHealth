@@ -18,5 +18,6 @@ ml/openAIKey.json
 
 # macOS
 .DS_Store
+env.json
 
 yarn-error.log

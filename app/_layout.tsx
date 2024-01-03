@@ -9,6 +9,7 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { TamaguiProvider, Text, Theme } from "tamagui";
 
+import HeaderBar from "../components/HeaderBar";
 import { MySafeAreaView } from "../components/MySafeAreaView";
 import config from "../tamagui.config";
 
@@ -33,10 +34,8 @@ export default function Layout() {
   return (
     <TamaguiProvider config={config}>
       <Suspense fallback={<Text>Loading...</Text>}>
-        <Theme name={colorScheme}>
-          <ThemeProvider
-            value={colorScheme === "light" ? DefaultTheme : DarkTheme}
-          >
+        <Theme name={"light"}>
+          <ThemeProvider value={DefaultTheme}>
             {/* <MySafeAreaView> */}
             <Stack
               screenOptions={{

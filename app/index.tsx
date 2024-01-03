@@ -1,19 +1,10 @@
-import { Github, Twitter } from "@tamagui/lucide-icons";
-import { Link, useRouter } from "expo-router";
-import {
-  Button,
-  H1,
-  Image,
-  ListItem,
-  Paragraph,
-  Separator,
-  Square,
-  Text,
-  YGroup,
-  YStack
-} from "tamagui";
+import { ArrowRight } from "@tamagui/lucide-icons";
+import { useRouter } from "expo-router";
+import { Button, Image, Square, Text } from "tamagui";
 
 import { MyStack } from "../components/MyStack";
+
+import { ModerateScale, VerticalScale } from "./hooks/metrics";
 
 export default function Home() {
   const router = useRouter();
@@ -22,37 +13,60 @@ export default function Home() {
     <MyStack
       justifyContent="center"
       alignItems="center"
+      backgroundColor={"#FFFFFF"}
+      padding={0}
     >
       <Image
-        top={-50}
+        // marginTop={"15%"}
         height={"100%"}
-        width={"110%"}
-        position="absolute"
-        source={require("../assets/goatbg.jpg")}
+        // alignSelf="center"
+        // scale={0.9}
+        // position="absolute"
+        width={"100%"}
+        resizeMode="contain"
+        // height={"100%"}
+        source={{
+          uri: require("../assets/OPEN_HEALTH.png"),
+          width: 400,
+          height: 600
+        }}
       />
       <Square
-        size={400}
-        bottom={-450}
-        backgroundColor={"white"}
+        // margin={40}
+        paddingLeft={"$4"}
+        paddingRight={"$4"}
+        width={"100%"}
+        position="absolute"
+        bottom={"2.5%"}
         justifyContent="flex-start"
         alignItems="flex-start"
-        padding={"$5"}
+        paddingTop={"$5"}
+        paddingBottom={"$5"}
       >
         <Text
-          fontSize={20}
+          fontSize={ModerateScale(22)}
           fontWeight="bold"
+          color={"black"}
         >
-          Get started with FitGoat
+          Get started with OpenHealth
         </Text>
         <Button
           width={"100%"}
-          marginTop={16}
-          theme="green"
-          color={"black"}
+          height={VerticalScale(55)}
+          marginTop={12}
+          borderColor={"black"}
+          backgroundColor={"white"}
           fontWeight="bold"
-          onPress={() => router.push("/tabs")}
+          theme="red"
+          iconAfter={<ArrowRight size={ModerateScale(14)} />}
+          onPress={() => router.replace("/tabs")}
         >
-          {"Continue ->"}
+          <Text
+            fontWeight={"bold"}
+            fontSize={ModerateScale(14)}
+          >
+            Continue
+          </Text>
         </Button>
       </Square>
 

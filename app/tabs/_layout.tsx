@@ -1,22 +1,61 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tabs, useRouter } from "expo-router";
+import { Button, Square } from "tamagui";
 
+import { ModerateScale } from "../hooks/metrics";
 export default function Layout() {
   const router = useRouter();
 
   return (
     <Tabs>
       <Tabs.Screen
-        name="tab0"
+        name="home"
         options={{
-          title: "Calorie Counter",
+          headerShown: false,
+          title: "",
+          tabBarStyle: {
+            // marginBottom: -10,
+            marginLeft: -20
+          },
+          tabBarIcon(props) {
+            return (
+              <MaterialCommunityIcons
+                name="home"
+                {...props}
+                size={ModerateScale(30)}
+                marginBottom={-15}
+                marginRight={-20}
+              />
+            );
+          }
+          // headerLeft() {
+          //   return (
+          //     <Square
+          //       backgroundColor={"white"}
+          //       width={"1000%"}
+          //       height={"100%"}
+          //     ></Square>
+          //   );
+          // }
+        }}
+      />
+      <Tabs.Screen
+        name="calorie"
+        options={{
+          title: "",
+          headerShown: false,
+          tabBarStyle: {
+            // marginBottom: -10
+            marginLeft: -20
+          },
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="food-apple"
                 {...props}
-                size={30}
-                top={5}
+                size={ModerateScale(30)}
+                marginBottom={-15}
+                marginRight={-20}
               />
             );
           }
@@ -33,16 +72,22 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="tab1"
+        name="vision"
         options={{
-          title: "Form Rater",
+          title: "",
+          headerShown: false,
+          tabBarStyle: {
+            // marginBottom: -10
+            marginLeft: -20
+          },
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="camera"
                 {...props}
-                size={30}
-                top={5}
+                size={ModerateScale(30)}
+                marginBottom={-20}
+                marginRight={-20}
               />
             );
           }
@@ -59,16 +104,22 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="tab2"
+        name="training"
         options={{
           title: "",
+          headerShown: false,
+          tabBarStyle: {
+            // marginBottom: -10
+            marginLeft: -20
+          },
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="dumbbell"
                 {...props}
-                size={30}
-                top={20}
+                size={ModerateScale(30)}
+                marginBottom={-15}
+                marginRight={-20}
               />
             );
           }
@@ -85,17 +136,24 @@ export default function Layout() {
           // }
         }}
       />
+
       <Tabs.Screen
-        name="tab4"
+        name="profile"
         options={{
           title: "",
+          headerShown: false,
+          tabBarStyle: {
+            // marginBottom: -10
+            marginLeft: -20
+          },
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
-                name="clock"
+                name="face-man-outline"
                 {...props}
-                size={30}
-                top={20}
+                size={ModerateScale(30)}
+                marginBottom={-15}
+                marginRight={-20}
               />
             );
           }
