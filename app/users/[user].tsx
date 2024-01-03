@@ -1,8 +1,8 @@
 import { ArrowLeft } from "@tamagui/lucide-icons";
-import { useRouter, useSearchParams } from "expo-router";
+import { useRouter, useGlobalSearchParams } from "expo-router";
 import { Button, H3, H6, XStack } from "tamagui";
 
-import DialogDemo from "../../components/DialogDemo";
+import DialogDemo from "../../components/profile/DialogDemo";
 import { MyStack } from "../../components/MyStack";
 import SelectDemo from "../../components/SelectDemo";
 import SpinnerDemo from "../../components/SpinnerDemo";
@@ -10,7 +10,7 @@ import SwitchDemo from "../../components/SwitchDemo";
 
 export default function User() {
   const router = useRouter();
-  const params = useSearchParams();
+  const params = useGlobalSearchParams();
 
   return (
     <MyStack justifyContent="flex-start">

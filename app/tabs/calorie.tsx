@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { H5, Input, ScrollView, Tabs, Text } from "tamagui";
 
-import { CardDemo } from "../../components/DemoCard";
+import { CardDemo } from "../../components/calorie/DemoCard";
 import { MySafeAreaView } from "../../components/MySafeAreaView";
 import { MyStack } from "../../components/MyStack";
 import config from "../../env.json";
