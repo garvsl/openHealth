@@ -42,42 +42,53 @@ const renderRightActions = (progress, dragAnimatedValue, ref) => {
   };
 
 
-export const SheetCard = forwardRef(function SheetCard({text, iconText, iconColor, size, func, children}:any, ref:any) {
+export const SheetCard = forwardRef(function SheetCard({text, iconText, iconColor, size, func, children, nonremove}:any, ref:any) {
     const [open, setOpen] = useState(false);
 
     
     return (
-      <View
+        <View
         width={"100%"}
-        paddingHorizontal={"$2"}
+        paddingHorizontal={"$3"}
       >
-        <Swipeable
-          ref={ref}
-          friction={3}
-          shouldCancelWhenOutside={true}
-          cancelsTouchesInView={true}
-          renderRightActions={(progress, dragAnimatedValue) => renderRightActions(progress, dragAnimatedValue, ref)}
-          rightThreshold={2}
-          overshootFriction={7}
-          onSwipeableWillOpen={func}
-        >
-          <SheetDemo
-            open={open}
-            setOpen={setOpen}
-          >
-            <DemoCard
-              text={text}
-              iconText={iconText}
-              iconColor={iconColor}
-              size={size}
-              func={() => setOpen(true)}
+        {!nonremove ? (
+            <Swipeable
+              ref={ref}
+              friction={3}
+              shouldCancelWhenOutside={true}
+              cancelsTouchesInView={true}
+              renderRightActions={(progress, dragAnimatedValue) => renderRightActions(progress, dragAnimatedValue, ref)}
+              rightThreshold={2}
+              overshootFriction={7}
+              onSwipeableWillOpen={func}
             >
-              {children}
-            </DemoCard>
-          </SheetDemo>
-        </Swipeable>
-      </View>
-    );
+              <SheetDemo
+                open={open}
+                setOpen={setOpen}
+              >
+                <DemoCard
+                  text={text}
+                  iconText={iconText}
+                  iconColor={iconColor}
+                  size={size}
+                  func={() => setOpen(true)}
+                >
+                  {children}
+                </DemoCard>
+              </SheetDemo>
+            </Swipeable>
+        ) : 
+        (
+        <DemoCard
+            text={text}
+            iconText={iconText}
+            iconColor={iconColor}
+            size={size}
+            >
+            {children}
+        </DemoCard>)}
+    </View>
+     )
   });
   
   const styles = StyleSheet.create({

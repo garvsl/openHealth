@@ -9,7 +9,7 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { TamaguiProvider, Text, Theme } from "tamagui";
 
-import HeaderBar from "../components/HeaderBar";
+import HeaderBar from "../components/home/HeaderBar";
 import { MySafeAreaView } from "../components/MySafeAreaView";
 import config from "../tamagui.config";
 

@@ -2,14 +2,17 @@ import React from "react";
 import { Card, YStack, H4 } from "tamagui";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-export const DemoCard = ({ text, iconText, iconColor, size, children, func }: any) => {
+export const DemoCard = ({ text, iconText, iconColor, size, children, func, props }: any) => {
     return (
       <Card
         size={"$4"}
         bordered
-        height={85}
+        // height={55}
         backgroundColor={"white"}
         animation="bouncy"
+        onPress={func}
+        pressStyle={{ scale: 0.925 }}
+        {...props}
       >
         <Card.Header
           flexDirection="row"

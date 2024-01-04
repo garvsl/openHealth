@@ -1,7 +1,7 @@
 import React, { createRef, useRef, useState } from "react";
-import { ScrollView, Text, YStack } from "tamagui";
+import { H4, ScrollView, Text, YStack } from "tamagui";
 import { XStack } from "tamagui";
-import HeaderBar from "../../components/HeaderBar";
+import HeaderBar from "../../components/home/HeaderBar";
 import { MySafeAreaView } from "../../components/MySafeAreaView";
 import { MyStack } from "../../components/MyStack";
 import SearchBar from "../../components/home/SearchBar";
@@ -38,11 +38,15 @@ export default function Home() {
       iconText: "plus-circle",
       iconColor: "green",
       size: 50
-    }
+    },
+
   ]);
 
-  const [text, setText] = useState("");
+  
+  const [filteredItems, setFilteredItems] = useState(defaultItems);
   const refs = defaultItems.map(() => useRef(null));
+
+  
 
   return (
     <MyStack
@@ -51,10 +55,11 @@ export default function Home() {
       alignItems="center"
       padding={0}
       backgroundColor={"white"}
+
     >
       <MySafeAreaView
         width={"100%"}
-        gap={25}
+        gap={25} 
       >
         <YStack
           gap={30}
@@ -66,7 +71,7 @@ export default function Home() {
           <XStack
             justifyContent="flex-start"
             flexDirection="column"
-            gap={10}
+            gap={8}
           >
             <Text
               fontSize={"$7"}
@@ -77,63 +82,49 @@ export default function Home() {
             </Text>
             <SearchBar
               placeHolder={"Search tasks..."}
-              setText={setText}
+              setFilteredItems={setFilteredItems}
+              defaultItems={defaultItems}
             />
           </XStack>
         </YStack>
 
         <ScrollView
-          marginTop={-15}
-          marginBottom={15}
-          onScroll={()=>{refs.map((e)=>e.current.close())}}
+          marginTop={-35}
+          scrollsToTop={true}
+          onScroll={()=>{refs.map((e)=>refs.length > 1 && e.current != null  && e.current.close())}}
           scrollEventThrottle={0}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ alignItems: "center" }}
+          contentContainerStyle={{ alignItems: "center", paddingBottom: 30, paddingTop:20}}
         >
           <YStack
             alignItems="center"
             gap={11}
             width={"100%"}
           >
-            {text == "" &&
-              defaultItems.map((item, index) => (
-                <SheetCard
-                  ref={refs[index]}
-                  key={index}
-                  text={item.text}
-                  iconText={item.iconText}
-                  iconColor={item.iconColor}
-                  size={item.size}
-                  func={()=>{refs.map((e)=>e != refs[index] && e.current.close())}}
-                />
-              ))}
-
-            {text != "" &&
-              defaultItems
-                .filter((item) => {
-                  return item.text.toLowerCase().includes(text.toLowerCase());
-                })
-                .map((item, index) => {
-                  {
-                    return item ? (
-                      <SheetCard
-                        key={index}
-                        text={item.text}
-                        iconText={item.iconText}
-                        iconColor={item.iconColor}
-                        size={item.size}
-                      />
-                    ) : (
-                      <SheetCard
-                        key={index}
-                        text={"No results found"}
-                        iconText={"magnify"}
-                        iconColor={"black"}
-                        size={20}
-                      />
-                    );
-                  }
-                })}
+              {filteredItems.length == 0 ?(
+                  <SheetCard
+                  text={"Theres nothing here..."}
+                  iconText={"magnify"}
+                  iconColor={"black"}
+                  size={25}
+                  nonremove={true}
+                /> 
+                ) : (
+                  filteredItems.map((item, index) => {
+                    return(             
+                        <SheetCard
+                          ref={refs[index]}
+                          key={index}
+                          text={item.text}
+                          iconText={item.iconText}
+                          iconColor={item.iconColor}
+                          size={item.size}
+                          func={()=>{refs.map((e)=>refs.length > 1 && e.current != null && e != refs[index] && e.current.close())}}
+                        />
+                    )
+                  })
+                )
+              }
           </YStack>
         </ScrollView>
       </MySafeAreaView>

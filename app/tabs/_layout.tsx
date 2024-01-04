@@ -15,6 +15,7 @@ export default function Layout() {
           title: "",
           tabBarStyle: {
             // marginBottom: -10,
+            marginTop: -20,
             marginLeft: -20
           },
           tabBarIcon(props) {
@@ -45,6 +46,7 @@ export default function Layout() {
           title: "",
           headerShown: false,
           tabBarStyle: {
+            marginTop: -20,
             // marginBottom: -10
             marginLeft: -20
           },
@@ -77,6 +79,7 @@ export default function Layout() {
           title: "",
           headerShown: false,
           tabBarStyle: {
+            marginTop: -20,
             // marginBottom: -10
             marginLeft: -20
           },

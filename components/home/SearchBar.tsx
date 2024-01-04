@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Search } from "@tamagui/lucide-icons";
 import { Input, View, XStack } from "tamagui";
 
-export default function SearchBar({ placeHolder, props, setText }: any) {
+export default function SearchBar({ placeHolder, props, setFilteredItems, defaultItems }: any) {
+
   return (
     <View
       // flex={1}
@@ -22,7 +23,10 @@ export default function SearchBar({ placeHolder, props, setText }: any) {
         backgroundColor={"$gray1"}
         borderRadius={15}
         // marginTop={-15}
-        onChangeText={(text) => setText(text)}
+        onChangeText={(text) =>  setFilteredItems(text != "" ? defaultItems
+        .filter((item) => {
+          return item.text.toLowerCase().includes(text.toLowerCase());
+        }) : defaultItems)}
       />
     </View>
   );
