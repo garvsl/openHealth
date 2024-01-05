@@ -85,7 +85,7 @@ export const SheetCard = forwardRef(function SheetCard(
             iconText={iconText}
             iconColor={iconColor}
             size={size}
-            func={() => setOpen(true)}
+            setOpen={setOpen}
           >
             {children}
           </DemoCard>
