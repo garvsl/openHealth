@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Search } from "@tamagui/lucide-icons";
 import { Input, View } from "tamagui";
 
-export default function SearchBar({ placeHolder, onSearch }: any) {
+export default function SearchBar({ placeHolder, onSearch, props }: any) {
   return (
-    <View justifyContent="center">
+    <View
+      justifyContent="center"
+      {...props}
+    >
       <Search
         size={"$1"}
         style={{ position: "absolute", zIndex: 99, marginLeft: 12.5 }}

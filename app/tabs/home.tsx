@@ -104,8 +104,6 @@ export default function Home() {
             </Text>
             <SearchBar
               placeHolder={"Search tasks..."}
-              setFilteredItems={setFilteredItems}
-              defaultItems={defaultItems}
               onSearch={onSearch}
             />
           </XStack>

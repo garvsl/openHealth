@@ -3,6 +3,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { H5, Input, ScrollView, Tabs, Text } from "tamagui";
 
 import { CardDemo } from "../../components/calorie/DemoCard";
+import SearchBar from "../../components/home/SearchBar";
 import { MySafeAreaView } from "../../components/MySafeAreaView";
 import { MyStack } from "../../components/MyStack";
 import config from "../../env.json";
@@ -46,19 +47,13 @@ export default function Calorie() {
   return (
     <MyStack overflow="visible">
       <MySafeAreaView alignItems="center">
-        <Input
-          size="$4"
-          paddingLeft="$8"
-          borderWidth={2}
-          width={"95%"}
-          onChangeText={(e) => onTextChange(e)}
-        />
-        <MaterialCommunityIcons
-          name="text-box-search-outline"
-          size={30}
-          position="absolute"
+        <SearchBar
+          placeHolder={"Search foods..."}
+          onSearch={onTextChange}
+          props={{ width: "95%" }}
         />
         <ScrollView
+          mt={20}
           width="110%"
           backgroundColor="white"
           // padding="$4"
