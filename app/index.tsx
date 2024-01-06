@@ -58,7 +58,7 @@ export default function Home() {
           backgroundColor={"white"}
           fontWeight="bold"
           theme="red"
-          iconAfter={<ArrowRight size={ModerateScale(14)} />}
+          iconAfter={<ArrowRight size={ModerateScale(16)} />}
           onPress={() => router.replace("/tabs")}
         >
           <Text

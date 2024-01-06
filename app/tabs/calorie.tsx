@@ -1,16 +1,75 @@
 import React, { useEffect, useState } from "react";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { H5, Input, ScrollView, Tabs, Text } from "tamagui";
+import { ScrollView, Tabs, View } from "tamagui";
+import { useDebounce } from "use-debounce";
 
 import { CardDemo } from "../../components/calorie/DemoCard";
+import { HorizontalTabs } from "../../components/calorie/Tab";
 import SearchBar from "../../components/home/SearchBar";
 import { MySafeAreaView } from "../../components/MySafeAreaView";
 import { MyStack } from "../../components/MyStack";
 import config from "../../env.json";
 
+const Foods = ({ commonFoods, loading, setText }: any) => {
+  return (
+    <View
+      // mt={10}
+      width={"100%"}
+      // bg={"red"}
+      height={"100%"}
+      // mb={150}
+      padding="$4"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <SearchBar
+        placeHolder={"Search foods..."}
+        onSearch={setText}
+        props={{ width: "100%" }}
+      />
+      <ScrollView
+        mt={20}
+        // mb={-150}
+        contentContainerStyle={{
+          paddingBottom: 80
+        }}
+        width="110%"
+        height={"100%"}
+        // padding="$4"
+        borderRadius="$4"
+      >
+        <Tabs
+          // defaultValue="tab2"
+          justifyContent="center"
+          orientation="vertical"
+          // marginTop={10}
+          flexDirection="row"
+          flexWrap="wrap"
+          gap={-20}
+          rowGap={16}
+        >
+          {commonFoods &&
+            commonFoods.map((food, index) => {
+              return (
+                <CardDemo
+                  key={index}
+                  nam={food.food_name}
+                  cal={food.nf_calories.toString()}
+                  photo={food.photo.thumb}
+                />
+              );
+            })}
+        </Tabs>
+      </ScrollView>
+    </View>
+  );
+};
+
 export default function Calorie() {
   const [commonFoods, setCommonFoods] = useState(null);
   const [resetFood, setResetFood] = useState(false);
+  const [text, setText] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [debouncedText] = useDebounce(text, 250);
 
   const initialUrl = "https://trackapi.nutritionix.com/v2";
   const headers = {
@@ -18,22 +77,36 @@ export default function Calorie() {
     "x-app-key": config.nutritionAPI
   };
 
-  const onTextChange = async (e) => {
-    if (e.length > 0) {
-      const url = `${initialUrl}/search/instant?query=${e}`;
+  const getFoods = async (text) => {
+    if (text.length > 0) {
+      const url = `${initialUrl}/search/instant?query=${text}`;
 
       const response = await fetch(url, {
         method: "GET",
         headers: headers
       });
       const data = await response.json();
-      setCommonFoods(data.branded);
+      // console.log(data);
+      return data.branded;
     } else {
-      setResetFood(true);
+      setResetFood(!resetFood);
     }
   };
+
   useEffect(() => {
     (async () => {
+      if (debouncedText) {
+        const foods = await getFoods(debouncedText);
+        setCommonFoods(foods);
+      } else {
+        setResetFood(!resetFood);
+      }
+    })();
+  }, [debouncedText]);
+
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
       const url = `${initialUrl}/search/instant?query=common?common=True`;
 
       const response = await fetch(url, {
@@ -42,51 +115,23 @@ export default function Calorie() {
       });
       const data = await response.json();
       setCommonFoods(data.branded);
+      setLoading(false);
     })();
   }, [resetFood]);
   return (
     <MyStack overflow="visible">
       <MySafeAreaView alignItems="center">
-        <SearchBar
-          placeHolder={"Search foods..."}
-          onSearch={onTextChange}
-          props={{ width: "95%" }}
+        <HorizontalTabs
+          firstTitle={"Dashboard"}
+          secondTitle={"Foods"}
+          loading={loading}
+          secondComponent={
+            <Foods
+              commonFoods={commonFoods}
+              setText={setText}
+            />
+          }
         />
-        <ScrollView
-          mt={20}
-          mb={-50}
-          contentContainerStyle={{
-            paddingBottom: 40
-          }}
-          width="110%"
-          backgroundColor="white"
-          // padding="$4"
-          borderRadius="$4"
-        >
-          <Tabs
-            // defaultValue="tab2"
-            justifyContent="center"
-            orientation="vertical"
-            // marginTop={10}
-            flexDirection="row"
-            flexWrap="wrap"
-            gap={-20}
-            rowGap={16}
-          >
-            {commonFoods &&
-              commonFoods.map((food, index) => {
-                return (
-                  <CardDemo
-                    key={index}
-                    nam={food.food_name}
-                    cal={food.nf_calories.toString()}
-                    photo={food.photo.thumb}
-                    // photo={food.photo} // Assuming photo is an object
-                  />
-                );
-              })}
-          </Tabs>
-        </ScrollView>
       </MySafeAreaView>
     </MyStack>
   );

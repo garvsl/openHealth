@@ -85,8 +85,7 @@ export default function Home() {
       >
         <YStack
           gap={30}
-          padding={"5%"}
-          paddingLeft={"4%"}
+          padding={"3.5%"}
         >
           <HeaderBar />
 
