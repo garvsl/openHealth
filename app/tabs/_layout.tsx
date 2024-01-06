@@ -1,176 +1,118 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Tabs, useRouter } from "expo-router";
-import { Button, Square } from "tamagui";
+import { Tabs } from "expo-router";
+import { View } from "tamagui";
 
-import { ModerateScale } from "../hooks/metrics";
+import {
+  HorizontalScale,
+  ModerateScale,
+  VerticalScale
+} from "../hooks/metrics";
 export default function Layout() {
-  const router = useRouter();
-
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarLabelStyle: {
+          fontSize: 13
+        },
+        tabBarIconStyle: {
+          top: 4
+        },
+        tabBarActiveTintColor: "tomato",
+        tabBarLabelPosition: "below-icon",
+        tabBarStyle: {
+          alignItems: "center",
+          backgroundColor: "#fff"
+        }
+      }}
+    >
       <Tabs.Screen
         name="home"
         options={{
-          headerShown: false,
-          title: "",
-          tabBarStyle: {
-            // marginBottom: -10,
-            marginTop: -20,
-            marginLeft: -20
-          },
+          title: "Home",
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="home"
                 {...props}
-                size={ModerateScale(30)}
-                marginBottom={-15}
-                marginRight={-20}
+                size={30}
               />
             );
           }
-          // headerLeft() {
-          //   return (
-          //     <Square
-          //       backgroundColor={"white"}
-          //       width={"1000%"}
-          //       height={"100%"}
-          //     ></Square>
-          //   );
-          // }
         }}
       />
       <Tabs.Screen
         name="calorie"
         options={{
-          title: "",
-          headerShown: false,
-          tabBarStyle: {
-            marginTop: -20,
-            // marginBottom: -10
-            marginLeft: -20
-          },
+          title: "Calorie",
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="food-apple"
                 {...props}
-                size={ModerateScale(30)}
-                marginBottom={-15}
-                marginRight={-20}
+                size={30}
               />
             );
           }
-          // headerLeft() {
-          //   return (
-          //     <Button
-          //       ml="$2.5"
-          //       onPress={() => router.push("/")}
-          //     >
-          //       <MaterialCommunityIcons name="arrow-left" />
-          //     </Button>
-          //   );
-          // }
         }}
       />
       <Tabs.Screen
         name="vision"
         options={{
           title: "",
-          headerShown: false,
-          tabBarStyle: {
-            marginTop: -20,
-            // marginBottom: -10
-            marginLeft: -20
-          },
-          tabBarIcon(props) {
+
+          tabBarIcon(props: any) {
             return (
-              <MaterialCommunityIcons
-                name="camera"
-                {...props}
-                size={ModerateScale(30)}
-                marginBottom={-20}
-                marginRight={-20}
-              />
+              <View
+                justifyContent="center"
+                alignItems="center"
+                backgroundColor={`${props.focused ? "tomato" : "$red9"}`}
+                height={VerticalScale(70)}
+                width={HorizontalScale(70)}
+                aspectRatio={1 / 1}
+                borderRadius={100}
+                top={-6}
+              >
+                <MaterialCommunityIcons
+                  name="camera"
+                  style={{ color: `${props.focused ? "white" : "white"}` }}
+                  {...props}
+                  size={ModerateScale(35)}
+                />
+              </View>
             );
           }
-          // headerLeft() {
-          //   return (
-          //     <Button
-          //       ml="$2.5"
-          //       onPress={() => router.push("/")}
-          //     >
-          //       <MaterialCommunityIcons name="arrow-left" />
-          //     </Button>
-          //   );
-          // }
         }}
       />
       <Tabs.Screen
         name="training"
         options={{
-          title: "",
-          headerShown: false,
-          tabBarStyle: {
-            // marginBottom: -10
-            marginLeft: -20
-          },
+          title: "Training",
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="dumbbell"
                 {...props}
-                size={ModerateScale(30)}
-                marginBottom={-15}
-                marginRight={-20}
+                size={30}
               />
             );
           }
-
-          // headerLeft() {
-          //   return (
-          //     <Button
-          //       ml="$2.5"
-          //       onPress={() => router.push("/")}
-          //     >
-          //       <MaterialCommunityIcons name="arrow-left" />
-          //     </Button>
-          //   );
-          // }
         }}
       />
 
       <Tabs.Screen
         name="profile"
         options={{
-          title: "",
-          headerShown: false,
-          tabBarStyle: {
-            // marginBottom: -10
-            marginLeft: -20
-          },
+          title: "Profile",
           tabBarIcon(props) {
             return (
               <MaterialCommunityIcons
                 name="face-man-outline"
                 {...props}
-                size={ModerateScale(30)}
-                marginBottom={-15}
-                marginRight={-20}
+                size={30}
               />
             );
           }
-
-          // headerLeft() {
-          //   return (
-          //     <Button
-          //       ml="$2.5"
-          //       onPress={() => router.push("/")}
-          //     >
-          //       <MaterialCommunityIcons name="arrow-left" />
-          //     </Button>
-          //   );
-          // }
         }}
       />
     </Tabs>
