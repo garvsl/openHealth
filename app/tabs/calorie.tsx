@@ -54,6 +54,10 @@ export default function Calorie() {
         />
         <ScrollView
           mt={20}
+          mb={-50}
+          contentContainerStyle={{
+            paddingBottom: 40
+          }}
           width="110%"
           backgroundColor="white"
           // padding="$4"
@@ -63,8 +67,7 @@ export default function Calorie() {
             // defaultValue="tab2"
             justifyContent="center"
             orientation="vertical"
-            marginTop={10}
-            backgroundColor={"transparent"}
+            // marginTop={10}
             flexDirection="row"
             flexWrap="wrap"
             gap={-20}

@@ -111,6 +111,7 @@ export default function Home() {
 
         <ScrollView
           marginTop={-35}
+          marginBottom={-35}
           scrollsToTop={true}
           onScroll={() => {
             refs.map(
@@ -121,7 +122,7 @@ export default function Home() {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{
             alignItems: "center",
-            paddingBottom: 30,
+            paddingBottom: 50,
             paddingTop: 20
           }}
         >
