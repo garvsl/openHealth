@@ -25,6 +25,7 @@ export const DemoCard = ({
         bordered
         backgroundColor={"white"}
         animation="bouncy"
+        pressStyle={{ scale: 1.025 }}
         {...props}
       >
         <Card.Header

@@ -27,18 +27,18 @@ const DemoCard = (props: DemoCardProps) => {
       bordered
       //   key={nam}
       animation="bouncy"
-      width={160}
-      height={200}
+      width={"100%"}
+      // flex={1}
+      height={100}
       scale={0.9}
-      hoverStyle={{ scale: 0.925 }}
-      pressStyle={{ scale: 0.875 }}
+      pressStyle={{ scale: 0.925 }}
     >
       <Card.Header padded>
         <H4 textBreakStrategy="simple">{nam}</H4>
         <Paragraph theme="alt2">{cal} calories</Paragraph>
       </Card.Header>
       <Card.Footer
-        justifyContent="center"
+        justifyContent="flex-end"
         padded
       >
         {/* <Image
