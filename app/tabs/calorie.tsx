@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import BigList from "react-native-big-list";
 import { ScrollView, Tabs, View } from "tamagui";
 import { useDebounce } from "use-debounce";
 
@@ -10,13 +11,21 @@ import { MyStack } from "../../components/MyStack";
 import config from "../../env.json";
 
 const Foods = ({ commonFoods, loading, setText }: any) => {
+  const renderItem = ({ item }) => (
+    <CardDemo
+      nam={item.food_name}
+      cal={item.nf_calories.toString()}
+      photo={item.photo.thumb}
+    />
+  );
+
+  const renderHeader = () => <View />;
+  const renderFooter = () => <View />;
+
   return (
     <View
-      // mt={10}
       width={"100%"}
-      // bg={"red"}
       height={"100%"}
-      // mb={150}
       padding="$4"
       justifyContent="center"
       alignItems="center"
@@ -26,40 +35,14 @@ const Foods = ({ commonFoods, loading, setText }: any) => {
         onSearch={setText}
         props={{ width: "100%" }}
       />
-      <ScrollView
-        mt={20}
-        // mb={-150}
-        contentContainerStyle={{
-          paddingBottom: 80
-        }}
-        width="110%"
-        height={"100%"}
-        // padding="$4"
-        borderRadius="$4"
-      >
-        <Tabs
-          // defaultValue="tab2"
-          justifyContent="center"
-          orientation="vertical"
-          // marginTop={10}
-          flexDirection="row"
-          flexWrap="wrap"
-          gap={-20}
-          rowGap={16}
-        >
-          {commonFoods &&
-            commonFoods.map((food, index) => {
-              return (
-                <CardDemo
-                  key={index}
-                  nam={food.food_name}
-                  cal={food.nf_calories.toString()}
-                  photo={food.photo.thumb}
-                />
-              );
-            })}
-        </Tabs>
-      </ScrollView>
+      <BigList
+        data={commonFoods}
+        renderItem={renderItem}
+        itemHeight={80} // Adjust based on your item height
+        renderHeader={renderHeader}
+        renderFooter={renderFooter}
+        style={{ width: "110%", gap: 10, flexDirection: "column", flex: 1 }}
+      />
     </View>
   );
 };
