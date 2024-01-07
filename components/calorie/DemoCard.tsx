@@ -7,6 +7,7 @@ import {
   H4,
   Image,
   Paragraph,
+  Text,
   XStack
 } from "tamagui";
 
@@ -29,13 +30,16 @@ const DemoCard = (props: DemoCardProps) => {
       animation="bouncy"
       width={"100%"}
       // flex={1}
-      height={100}
+
+      height={80}
       scale={0.9}
       pressStyle={{ scale: 0.925 }}
     >
       <Card.Header padded>
         <H4 textBreakStrategy="simple">{nam}</H4>
-        <Paragraph theme="alt2">{cal} calories</Paragraph>
+        <Paragraph theme="alt2">
+          <Text color="$green8">{cal}</Text> calories
+        </Paragraph>
       </Card.Header>
       <Card.Footer
         justifyContent="flex-end"
