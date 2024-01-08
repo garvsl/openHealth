@@ -1,28 +1,29 @@
-import { BarChart } from "react-native-gifted-charts";
-import { View } from "tamagui";
+import { ScrollView, View } from "tamagui";
+
+import { Bar } from "./BarChart";
+import { Pie } from "./PieChart";
 
 export const CalChart = () => {
-  const barData = [
-    { value: 2620, label: "M", frontColor: "#177AD5" },
-    { value: 1500, label: "T", frontColor: "#177AD5" },
-    { value: 1745, label: "W", frontColor: "#177AD5" },
-    { value: 3120, label: "T" },
-    { value: 2600, label: "F", frontColor: "#177AD5" },
-    { value: 2560, label: "S" },
-    { value: 3000, label: "S" }
-  ];
   return (
     <View>
-      <BarChart
-        barWidth={22}
-        noOfSections={3}
-        barBorderRadius={4}
-        maxValue={2800}
-        frontColor="red"
-        data={barData}
-        yAxisThickness={0}
-        xAxisThickness={0}
-      />
+      <ScrollView
+        pt={30}
+        height={"100%"}
+        contentContainerStyle={{
+          paddingBottom: 100
+        }}
+      >
+        <View
+          flexDirection="column"
+          gap={50}
+        >
+          <View ml={"$4"}>
+            <Bar />
+          </View>
+          <Pie text={"Calories Consumed (kcals)"} />
+          <Pie text={"Calories Burned (kcals)"} />
+        </View>
+      </ScrollView>
     </View>
   );
 };

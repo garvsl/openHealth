@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ScrollView, Tabs, View } from "tamagui";
 import { useDebounce } from "use-debounce";
 
-import { Dashboard } from "../../components/calorie/Dashboard";
+import { CalChart } from "../../components/calorie/CalChart";
 import { CardDemo } from "../../components/calorie/DemoCard";
 import { Foods } from "../../components/calorie/Foods";
 import { HorizontalTabs } from "../../components/calorie/Tab";
@@ -71,7 +71,7 @@ export default function Calorie() {
         <HorizontalTabs
           firstTitle={"Dashboard"}
           secondTitle={"Foods"}
-          firstComponent={<Dashboard />}
+          firstComponent={<CalChart />}
           secondComponent={
             <Foods
               commonFoods={commonFoods}
