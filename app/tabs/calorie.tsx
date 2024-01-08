@@ -2,64 +2,14 @@ import React, { useEffect, useState } from "react";
 import { ScrollView, Tabs, View } from "tamagui";
 import { useDebounce } from "use-debounce";
 
+import { Dashboard } from "../../components/calorie/Dashboard";
 import { CardDemo } from "../../components/calorie/DemoCard";
+import { Foods } from "../../components/calorie/Foods";
 import { HorizontalTabs } from "../../components/calorie/Tab";
 import SearchBar from "../../components/home/SearchBar";
 import { MySafeAreaView } from "../../components/MySafeAreaView";
 import { MyStack } from "../../components/MyStack";
 import config from "../../env.json";
-
-const Foods = ({ commonFoods, setText }: any) => {
-  return (
-    <View
-      width={"100%"}
-      height={"100%"}
-      padding="$4"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <SearchBar
-        placeHolder={"Search foods..."}
-        onSearch={setText}
-        props={{ width: "100%" }}
-      />
-      <ScrollView
-        mt={20}
-        // mb={-150}
-        contentContainerStyle={{
-          paddingBottom: 80
-        }}
-        width="110%"
-        height={"100%"}
-        // padding="$4"
-        borderRadius="$4"
-      >
-        <Tabs
-          // defaultValue="tab2"
-          justifyContent="center"
-          orientation="vertical"
-          // marginTop={10}
-          flexDirection="row"
-          flexWrap="wrap"
-          gap={-20}
-          rowGap={16}
-        >
-          {commonFoods &&
-            commonFoods.map((food, index) => {
-              return (
-                <CardDemo
-                  key={index}
-                  nam={food.food_name}
-                  cal={food.nf_calories.toString()}
-                  photo={food.photo.thumb}
-                />
-              );
-            })}
-        </Tabs>
-      </ScrollView>
-    </View>
-  );
-};
 
 export default function Calorie() {
   const [commonFoods, setCommonFoods] = useState(null);
@@ -121,6 +71,7 @@ export default function Calorie() {
         <HorizontalTabs
           firstTitle={"Dashboard"}
           secondTitle={"Foods"}
+          firstComponent={<Dashboard />}
           secondComponent={
             <Foods
               commonFoods={commonFoods}
