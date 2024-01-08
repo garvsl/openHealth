@@ -12,8 +12,7 @@ export const HorizontalTabs = ({
   firstTitle,
   secondTitle,
   firstComponent,
-  secondComponent,
-  loading
+  secondComponent
 }: any) => {
   const [currentTab, setCurrentTab] = useState("tab1");
 

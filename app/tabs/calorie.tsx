@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import BigList from "react-native-big-list";
 import { ScrollView, Tabs, View } from "tamagui";
 import { useDebounce } from "use-debounce";
 
@@ -10,18 +9,7 @@ import { MySafeAreaView } from "../../components/MySafeAreaView";
 import { MyStack } from "../../components/MyStack";
 import config from "../../env.json";
 
-const Foods = ({ commonFoods, loading, setText }: any) => {
-  const renderItem = ({ item }) => (
-    <CardDemo
-      nam={item.food_name}
-      cal={item.nf_calories.toString()}
-      photo={item.photo.thumb}
-    />
-  );
-
-  const renderHeader = () => <View />;
-  const renderFooter = () => <View />;
-
+const Foods = ({ commonFoods, setText }: any) => {
   return (
     <View
       width={"100%"}
@@ -35,14 +23,40 @@ const Foods = ({ commonFoods, loading, setText }: any) => {
         onSearch={setText}
         props={{ width: "100%" }}
       />
-      <BigList
-        data={commonFoods}
-        renderItem={renderItem}
-        itemHeight={80} // Adjust based on your item height
-        renderHeader={renderHeader}
-        renderFooter={renderFooter}
-        style={{ width: "110%", gap: 10, flexDirection: "column", flex: 1 }}
-      />
+      <ScrollView
+        mt={20}
+        // mb={-150}
+        contentContainerStyle={{
+          paddingBottom: 80
+        }}
+        width="110%"
+        height={"100%"}
+        // padding="$4"
+        borderRadius="$4"
+      >
+        <Tabs
+          // defaultValue="tab2"
+          justifyContent="center"
+          orientation="vertical"
+          // marginTop={10}
+          flexDirection="row"
+          flexWrap="wrap"
+          gap={-20}
+          rowGap={16}
+        >
+          {commonFoods &&
+            commonFoods.map((food, index) => {
+              return (
+                <CardDemo
+                  key={index}
+                  nam={food.food_name}
+                  cal={food.nf_calories.toString()}
+                  photo={food.photo.thumb}
+                />
+              );
+            })}
+        </Tabs>
+      </ScrollView>
     </View>
   );
 };
@@ -61,7 +75,7 @@ export default function Calorie() {
   };
 
   const getFoods = async (text) => {
-    if (text.length > 0) {
+    if (text.length > 3) {
       const url = `${initialUrl}/search/instant?query=${text}`;
 
       const response = await fetch(url, {
@@ -107,7 +121,6 @@ export default function Calorie() {
         <HorizontalTabs
           firstTitle={"Dashboard"}
           secondTitle={"Foods"}
-          loading={loading}
           secondComponent={
             <Foods
               commonFoods={commonFoods}
