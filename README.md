@@ -1,18 +1,7 @@
-# Open Health
-###### This is a community template
-
 <p align="center">
   <img src="./assets/Open Health.jpg" alt="Open Health"/>
 </p>
 
-## Quick Start
-```
-Clone/fork the repo
-run yarn install
-run npx expo prebuild
-run npx expo run:ios
-
-```
 ## Inspiration
 **Problem**
 Personal Trainers: 60-120$ / hr
@@ -25,9 +14,33 @@ More people are willing to post/tell you what needs to be done, but they are not
 
 Another common experience was a lack of education in the field of nutrition, fitness, and neuroscience. Without great knowledge, comes great levels of powerlessness; we've all spent countless hours looking up the right diet/routine, just to get sucked into the vortex of online fitness influencers providing unsound advice.
 
-Ethan: I have a fiery passion for the fields of AI, Nutrition, and Neuroscience, which led to an attempt to work together to create a tool for those who may not share the same passion, but share the same, well... anatomy & biology who can also benefit. 
-I brought my expertise from my current work as a Science Research Fellow @ CUNY Research Foundation, neuroscience lab Research Assistant @ SUNY Downstate (where we are running clinical trials on a vitamin medical therapy for Autism), and Nutrition lab Research Assistant @ Brooklyn College (where we do research on the epigenetic effects of prenatal and postnatal Choline supplementation & diet).
-The gut-brain axis, epigenetics, nutritional psychiatry, and healthspan are some of the main drivers of much of what I do, and it was an honor to have an amazing team that ran with the idea and built something of substantial value that anyone can use.
+---
+
+### Technology Stack:
+
+- **Frontend:**
+  - React Native
+  - Expo
+  - Tamagui
+- **Backend:**
+  - Firebase
+  - Python
+- **Additional Tools:**
+  - OpenAI
+
+
+## Quick Start
+```
+Clone/fork the repo
+run yarn install
+run npx expo prebuild
+run npx expo run:ios
+
+```
+![home](https://github.com/garvsl/openHealth/assets/39009375/d4fc1c7e-a345-4f1e-8bf5-e8f490c5276b)
+![calories](https://github.com/garvsl/openHealth/assets/39009375/509c2931-72f9-44fd-bff7-1ab6c8b9f649)
+![ coach](https://github.com/garvsl/openHealth/assets/39009375/d0154318-1830-4518-821f-aeb52f938baa)
+
 
 ## What it does
 **TheOpen Health app calculates your:**
@@ -45,30 +58,11 @@ The gut-brain axis, epigenetics, nutritional psychiatry, and healthspan are some
 - Motivational pieces of advice from Arnold, Mike Mentzer, David Goggins, Dietitians, and more!!
 - a tool for you to track calories, macronutrients, and vitamins
 
-## How we built it
-
-React Native, Python, Flask.
-
-## Challenges we ran into
-
-API integration was troubling, some didnt work at all and lots had plenty of issues, that werent related to our implementation. The biggest problem was implementing this big of a project within the allotted time, and also getting plenty of sleep!
-
-## Accomplishments that we're proud of
-
 ## What we learned
-To a great extent, we learned that tools rule(s). Information and Content production are great for sharing a message, but when you want a mission to be implemented, you must provide the tools.
-
-We all utilized the app and have learned more about our bodies, what to do, and how to improve than anytime we could've spent reading articles or watching videos. 
-
-Of course, it is great to expand your knowledge, but vanity creeps up when you have no plans or strategies to implement what is learned. 
-
 To quote Fight Club "Self-improvement is {you know what they said}. Now self-destruction {construction*} is the answer."
 We all now have tools to take with us in our lifelong fitness endeavors.
 
-## What's next for Open Health
-We plan to continue building Open Health and running small-scale research projects where we get participants to utilize CV, Calorie Counters, and AI-generated advice to better their health, and compare them against those who tried to navigate the vast health space on their own.
-
-Another goal is to utilize our platform to expand the field of Nutritional Psychiatry, we believe it is going to be a prevailing field 
+More about the field of Nutritional Psychiatry, we believe it is going to be a prevailing field 
 1) because of it's legitimacy and efficacy.
 2) because the mental health crisis isn't easy up, and we don't want to continue losing our generation to what starts as surface mental health issues and progressively compounds into a Neurogenerative disease.
 
