@@ -12,6 +12,7 @@ export const CalChart = () => {
         contentContainerStyle={{
           paddingBottom: 100
         }}
+        showsVerticalScrollIndicator={false}
       >
         <View
           flexDirection="column"

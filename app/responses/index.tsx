@@ -24,7 +24,7 @@ export default function Tab01() {
   const [quest, setQuest] = useState("");
 
   const openai = new OpenAI({
-    apiKey: "oWM6XJqMEoEtLVw1NfQkT3BlbkFJcgBEx2MQiEf4urw9O3Rd"
+    apiKey: ""
   });
 
   const arnoldDemo = async () => {
@@ -62,19 +62,19 @@ export default function Tab01() {
   };
   const router = useRouter();
   return (
-    <MyStack
-      flexDirection="column"
-      justifyContent="flex-start"
-      //   alignItems="flex-start"
-      gap={-5}
-    >
-      <MySafeAreaView>
+    <MySafeAreaView>
+      <MyStack
+        flexDirection="column"
+        justifyContent="flex-start"
+        gap={-5}
+      >
         <XStack
-          marginTop={-15}
           justifyContent="center"
           space="$5"
         >
           <Button
+            size={"$3"}
+            style={{ position: "absolute", left: 0 }}
             icon={ArrowLeft}
             onPress={router.back}
           />
@@ -103,7 +103,7 @@ export default function Tab01() {
         </XStack>
 
         <Paragraph>{text && text}</Paragraph>
-      </MySafeAreaView>
-    </MyStack>
+      </MyStack>
+    </MySafeAreaView>
   );
 }

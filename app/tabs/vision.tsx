@@ -17,6 +17,7 @@ import {
   Text,
   TooltipSimple,
   Unspaced,
+  View,
   XStack
 } from "tamagui";
 
@@ -160,7 +161,11 @@ export default function Vision() {
   return (
     <Camera
       type={cameraDir}
-      style={{ width: "100%", height: "100%", justifyContent: "flex-end" }}
+      style={{
+        width: "100%",
+        height: "100%",
+        justifyContent: "flex-end"
+      }}
       ref={cameraRef}
     >
       {picture && (
@@ -171,19 +176,27 @@ export default function Vision() {
           source={{ uri: picture.uri }}
         />
       )}
-      <Button onPress={isRecording ? stopRecording : recordVideo}>
-        {isRecording ? "Stop Recording" : "Record Video"}
-      </Button>
-      <Button onPress={takePicture}>{"Take Picture"}</Button>
-      <Button
-        onPress={() =>
-          cameraDir == CameraType.back
-            ? setCameraDir(CameraType.front)
-            : setCameraDir(CameraType.back)
-        }
+      <View
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="center"
+        gap={4}
+        marginBottom={32}
       >
-        {"Flip Camera"}
-      </Button>
+        <Button onPress={isRecording ? stopRecording : recordVideo}>
+          {isRecording ? "Stop Recording" : "Record Video"}
+        </Button>
+        <Button onPress={takePicture}>{"Take Picture"}</Button>
+        <Button
+          onPress={() =>
+            cameraDir == CameraType.back
+              ? setCameraDir(CameraType.front)
+              : setCameraDir(CameraType.back)
+          }
+        >
+          {"Flip Camera"}
+        </Button>
+      </View>
     </Camera>
   );
 }
