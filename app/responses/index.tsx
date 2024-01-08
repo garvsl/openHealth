@@ -54,7 +54,7 @@ export default function Tab01() {
       //     presence_penalty: 0
       //   });
       setText(
-        "feeling the muscle work, contracting and stretching with each repetition. That's where the true magic happens. Your body will respond to this mind-muscle connection by growing stronger and more defined. It's not just about lifting; it's about feeling the burn and embracing it, for as I always say, 'The last three or four reps is what makes the muscle grow. This area of pain divides a champion from someone who is not a champion.' Now, onto consistency. Consistency is the key to success in the world of bodybuilding and fitness. Don't expect immediate results. It's a journey, and you must stay the course. Stick to your workout routine, give it your all, and never back down. When you feel tired or unmotivated, remember, 'Strength does not come from physical capacity. It comes from an indomitable will.' Recovery is equally important. Listen to your body, and don't overtrain. Rest and nutrition are when your body rebuilds and grows stronger. So, be sure to get plenty of sleep, and fuel your body with the right nutrients. Lastly, don't forget to find joy in your fitness journey. Just as bodybuilding was my passion, let it become yours. Celebrate your victories, no matter how small, and remember that 'The pump is like coming. It's great. I come all the time in the gym.' Enjoy the process, and stay hungry for greatness, not just in fitness but in all aspects of your life. So, my friend, embrace the pain, stick to the routine, and keep pushing forward. You've got this! 👊💪"
+        "First is to feel the muscle work, contracting and stretching with each repetition. That's where the true magic happens. Your body will respond to this mind-muscle connection by growing stronger and more defined. It's not just about lifting; it's about feeling the burn and embracing it, for as I always say, 'The last three or four reps is what makes the muscle grow. This area of pain divides a champion from someone who is not a champion.' Now, onto consistency. Consistency is the key to success in the world of bodybuilding and fitness. Don't expect immediate results. It's a journey, and you must stay the course. Stick to your workout routine, give it your all, and never back down. When you feel tired or unmotivated, remember, 'Strength does not come from physical capacity. It comes from an indomitable will.' Recovery is equally important. Listen to your body, and don't overtrain. Rest and nutrition are when your body rebuilds and grows stronger. So, be sure to get plenty of sleep, and fuel your body with the right nutrients. Lastly, don't forget to find joy in your fitness journey. Just as bodybuilding was my passion, let it become yours. Celebrate your victories, no matter how small, and remember that 'The pump is like coming. It's great. I come all the time in the gym.' Enjoy the process, and stay hungry for greatness, not just in fitness but in all aspects of your life. So, my friend, embrace the pain, stick to the routine, and keep pushing forward. You've got this! 👊💪"
       );
     } catch (e) {
       console.error("Error making API request:", e);
@@ -95,14 +95,20 @@ export default function Tab01() {
             placeholder="Enter your details..."
           />
           <Button
-            onPress={() => arnoldDemo()}
+            onPress={() => {
+              setTimeout(() => {
+                arnoldDemo();
+              }, 3000);
+            }}
             size={"$4"}
           >
             Go
           </Button>
         </XStack>
 
-        <Paragraph>{text && text}</Paragraph>
+        <ScrollView padding={"$4"}>
+          <Paragraph>{text && text}</Paragraph>
+        </ScrollView>
       </MyStack>
     </MySafeAreaView>
   );
